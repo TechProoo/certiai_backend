@@ -37,7 +37,7 @@ This is a NestJS-based REST API that provides:
 
 - Upload certificates for AI-powered authenticity verification
 - Integration with ML service (FastAPI + TensorFlow)
-- Hybrid verification: OCR (70%) + CNN (30%)
+- Hybrid verification: OCR (80%) + CNN (20%)
 - Certificate metadata extraction (name, ID, institution, date)
 - Verification history tracking
 

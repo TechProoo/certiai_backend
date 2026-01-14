@@ -63,6 +63,33 @@ npm run start:dev
 
 Check logs for successful connection.
 
+## Clearing Remote Data (Dev/Staging)
+
+This project uses these main tables in Supabase:
+
+- `users`
+- `verifications`
+- `audit_logs`
+
+If you want to **wipe all remote data** (but keep the schema), run the SQL in the Supabase **SQL Editor**:
+
+```sql
+BEGIN;
+TRUNCATE TABLE public.verifications, public.audit_logs, public.users RESTART IDENTITY CASCADE;
+COMMIT;
+```
+
+Or run the included helper file [backend/prisma/clear_app_data.sql](prisma/clear_app_data.sql).
+
+**Recommended (uses direct connection):**
+
+```powershell
+cd backend
+npx prisma db execute --url "$env:DIRECT_URL" --file prisma/clear_app_data.sql
+```
+
+**Warning:** this permanently deletes all users and verification history.
+
 ## Troubleshooting
 
 ### Error: "Tenant or user not found"

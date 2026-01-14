@@ -99,7 +99,7 @@ export class VerificationController {
     @Query('pageSize') pageSize?: string,
   ) {
     const result = await this.verificationService.getVerificationHistory(
-      req.user.userId,
+      req.user.id,
       page ? parseInt(page) : 1,
       pageSize ? parseInt(pageSize) : 10,
     );
@@ -118,7 +118,7 @@ export class VerificationController {
   async getVerification(@Req() req, @Param('id') id: string) {
     const verification = await this.verificationService.getVerificationById(
       id,
-      req.user.userId,
+      req.user.id,
     );
 
     return {
@@ -134,7 +134,7 @@ export class VerificationController {
   @Get('dashboard/stats')
   async getDashboardStats(@Req() req) {
     const stats = await this.verificationService.getDashboardStats(
-      req.user.userId,
+      req.user.id,
     );
 
     return {
@@ -151,7 +151,7 @@ export class VerificationController {
   async deleteVerification(@Req() req, @Param('id') id: string) {
     const result = await this.verificationService.deleteVerification(
       id,
-      req.user.userId,
+      req.user.id,
     );
 
     return {

@@ -133,9 +133,7 @@ export class VerificationController {
    */
   @Get('dashboard/stats')
   async getDashboardStats(@Req() req) {
-    const stats = await this.verificationService.getDashboardStats(
-      req.user.id,
-    );
+    const stats = await this.verificationService.getDashboardStats(req.user.id);
 
     return {
       success: true,
